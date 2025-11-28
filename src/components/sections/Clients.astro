@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import client1 from "../../assets/img/clients/1.png";
+import client2 from "../../assets/img/clients/2.png";
+import client3 from "../../assets/img/clients/3.png";
+import client4 from "../../assets/img/clients/4.png";
+import client5 from "../../assets/img/clients/5.png";
+import client6 from "../../assets/img/clients/6.png";
+
+---
+
+<!-- Clients -->
+<section class="clients">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="owl-carousel owl-theme">
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client1} alt="Client 1" width={175} height={88} /></a>
+          </div>
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client2} alt="Client 1" width={175} height={88} /></a>
+            </a>
+          </div>
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client3} alt="Client 1" width={175} height={88} /></a>
+            </a>
+          </div>
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client4} alt="Client 1" width={175} height={88} /></a>
+            </a>
+          </div>
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client5} alt="Client 1" width={175} height={88} /></a>
+            </a>
+          </div>
+          <div class="clients-logo">
+            <a href="#0">
+                <Image src={client6} alt="Client 1" width={175} height={88} /></a>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+// About section
+import { Image } from "astro:assets";
+import about1 from "../../assets/img/about-1.jpg";
+import about2 from "../../assets/img/about-2.jpg";
+
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="about section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+        <span>
+          <i class="star-rating"></i>
+          <i class="star-rating"></i>
+          <i class="star-rating"></i>
+          <i class="star-rating"></i>
+          <i class="star-rating"></i>
+        </span>
+        <div class="section-subtitle">{t("about.subtitle")}</div>
+        <div class="section-title">{t("about.title")}</div>
+        <article set:html={t("about.text")} />
+      </div>
+      <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+        <Image src={about1} alt="About Ortygia Suites" class="rounded mt-90 mb-30" width={261} height={436} />
+      </div>
+      <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+        <Image src={about2} alt="About Ortygia Suites" class="rounded" data-wow-delay="0.3s" width={237} height={316} />
+      </div>
+    </div>
+  </div>
+</section>

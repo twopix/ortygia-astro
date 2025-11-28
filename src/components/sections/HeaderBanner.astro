@@ -1,0 +1,27 @@
+---
+// Header Banner component for page titles
+interface Props {
+  title: string;
+  backgroundImage: ImageMetadata;
+  showScrollButton?: boolean;
+}
+
+const { title, backgroundImage, showScrollButton = true } = Astro.props;
+---
+
+<div class="banner-header section-padding valign bg-img bg-fixed bg-position-bottom" data-overlay-dark="5" data-background={backgroundImage.src}>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption">
+                <h1>{title}</h1>
+            </div>
+        </div>
+    </div>
+    {showScrollButton && (
+        <a href="#" data-scroll-nav="1" class="mouse smoothscroll">
+            <span class="mouse-icon">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
+    )}
+</div>

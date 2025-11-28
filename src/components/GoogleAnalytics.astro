@@ -1,0 +1,20 @@
+---
+const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID;
+---
+{GA_MEASUREMENT_ID && (
+    <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+        <script define:vars={{ GA_MEASUREMENT_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', GA_MEASUREMENT_ID);
+
+            document.addEventListener('astro:page-load', () => {
+                gtag('config', GA_MEASUREMENT_ID, {
+                    page_path: location.pathname,
+                });
+            });
+        </script>
+    </>
+)}

@@ -1,0 +1,63 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div id="cookie-banner" class="cookie-banner">
+  <p set:html={t("cookies.text")}></p>
+  <button id="accept-cookies">{t("cookies.agree")}</button>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: auto;
+    max-width: 320px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    font-size: 14px;
+  }
+  .cookie-banner p {
+    margin: 0 0 15px 0;
+    color: white;
+  }
+  .cookie-banner a {
+    color: white;
+    text-decoration: underline;
+  }
+  .cookie-banner button {
+    background-color: #4caf50;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookie-banner");
+    const acceptButton = document.getElementById("accept-cookies");
+
+    if (banner && !localStorage.getItem("cookies_accepted")) {
+      banner.style.display = "block";
+    }
+
+    if (acceptButton && banner) {
+      acceptButton.addEventListener("click", () => {
+        localStorage.setItem("cookies_accepted", "true");
+        banner.style.display = "none";
+      });
+    }
+  });
+</script>

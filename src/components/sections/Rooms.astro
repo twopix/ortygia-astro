@@ -1,0 +1,84 @@
+---
+// Apartments & Suites section
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const langPrefix = lang === "en" ? "" : `/${lang}`;
+const t = useTranslations(lang);
+
+// Get accommodation from content collection
+const accommodation = await getCollection("accommodation", (room) => room.slug.startsWith(lang + "/"));
+// Sort by order field
+accommodation.sort((a, b) => a.data.order - b.data.order);
+---
+
+
+<!-- Rooms -->
+<section class="rooms1 section-padding bg-cream">
+  <div class="container">
+    <div class="row" data-scroll-index="1">
+      <div class="col-md-12">
+        <div class="section-subtitle" set:html={t("rooms.text")} />
+        <div class="section-title" set:html={t("rooms.section_title")} />
+      </div>
+    </div>
+    <div class="row">
+      {
+        accommodation.map((room) => {
+          const slug = room.slug.substring(3); // remove en/ or el/
+          const href = lang === "el" ? `/el/accommodation/${slug}` : `/accommodation/${slug}`;
+          return (
+            <div class="col-md-4">
+              <div class="item">
+                <div class="position-re o-hidden">
+                  <Image src={room.data.images[0]} alt={room.data.title} width={411} height={548} layout="constrained" />
+                </div>
+                <span class="category">
+                  <a href={href}>
+                    {t("readMore")} <span class="visually-hidden">{room.data.title} </span>
+                  </a>
+                </span>
+                <div class="con">
+                  <h6>
+                    <a href={href}>{t("discover")}</a>
+                  </h6>
+                  <h5>
+                    <a href={href}>{room.data.title}</a>
+                  </h5>
+                  <div class="line" />
+                  <div class="row facilities">
+                    <div class="col col-md-7">
+                      <ul>
+                        <li>
+                          <i class="flaticon-bed" />
+                        </li>
+                        <li>
+                          <i class="flaticon-bath" />
+                        </li>
+                        <li>
+                          <i class="flaticon-breakfast" />
+                        </li>
+                        <li>
+                          <i class="flaticon-towel" />
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col col-md-5 text-end">
+                      <div class="permalink">
+                        <a href={href}>
+                          Details <i class="ti-arrow-right" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

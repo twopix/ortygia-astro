@@ -1,0 +1,86 @@
+---
+// Room Card component for accommodation page
+import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+  title: string;
+  intro: string;
+  images: ImageMetadata[];
+  people: string;
+  beds: string;
+  squareMeters: string;
+  bathrooms: string;
+  peopleIcon: ImageMetadata;
+  bedIcon: ImageMetadata;
+  bathIcon: ImageMetadata;
+  sketchIcon: ImageMetadata;
+  slug?: string;
+  bookingUrl?: string;
+  imageOnRight?: boolean;
+  marginBottom?: boolean;
+}
+
+const {
+  title,
+  intro,
+  images,
+  people,
+  beds,
+  squareMeters,
+  bathrooms,
+  peopleIcon,
+  bedIcon,
+  bathIcon,
+  sketchIcon,
+  slug,
+  bookingUrl,
+  imageOnRight = false,
+  marginBottom = true,
+} = Astro.props;
+
+// Use slug to create apartment detail URL, fallback to bookingUrl
+const slugWithoutLang = slug ? slug.split('/').slice(1).join('/') : '';
+const detailUrl = slug ? (lang === 'el' ? `/el/accommodation/${slugWithoutLang}` : `/accommodation/${slugWithoutLang}`) : bookingUrl || "room-details.html";
+---
+
+<div class={`row g-0 ${marginBottom ? "mb-90" : ""}`}>
+  <div class={`col-md-12 col-lg-5 bg-white ${imageOnRight ? "order2" : ""} valign`}>
+    <div class="content">
+      <div class="cont">
+        <h3>{title}</h3>
+        <p>{intro}</p>
+        <div class="icons-wrapper">
+          <div class="icon"><Image src={sketchIcon} alt="Size" class="icon-room" width={50} height={50} /></div>
+          <div class="icon"><Image src={bedIcon} alt="Bed" class="icon-room" width={50} height={50} /></div>
+          <div class="icon"><Image src={bathIcon} alt="Bath" class="icon-room" width={50} height={50} /></div>
+          <div class="icon"><Image src={peopleIcon} alt="People" class="icon-room" width={50} height={50} /></div>
+          <div class="icon-text">{squareMeters}</div>
+          <div class="icon-text">{beds}</div>
+          <div class="icon-text">{bathrooms}</div>
+          <div class="icon-text">{people}</div>
+        </div>
+        <div class="book">
+          <div><a href={detailUrl} class="butn-dark2"><span>{t('readMore')}</span></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class={`col-md-12 col-lg-7 ${imageOnRight ? "order1" : ""}`}>
+    <div class="owl-carousel owl-theme">
+      <Image src={images[0]} alt={title} width={651} height={434} />
+      <!-- {images.map((image) => (
+                <div class="img">
+                    {typeof image === 'string' ? (
+                        <img src={image} alt={title} />
+                    ) : (
+                        <Image src={image} alt={title} />
+                    )}
+                </div>
+            ))} -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+import outdoorImage1 from '../assets/img/outdoor/2025-06-30_21-43-40-489.jpg';
+import outdoorImage2 from '../assets/img/outdoor/2025-06-30_21-43-50-687.jpg';
+import outdoorImage3 from '../assets/img/outdoor/2025-07-04_20-24-36-910.jpg';
+
+const outdoorImages = [
+    outdoorImage1,
+    outdoorImage2,
+    outdoorImage3,
+];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const accommodationCollection = (await getCollection('accommodation', (entry) => entry.slug.startsWith(lang + '/'))).sort((a, b) => a.data.order - b.data.order);
+---
+
+{accommodationCollection.map((entry) => (
+    <div class="mb-5">
+        <h3>{entry.data.title}</h3>
+        <div class="row">
+            {entry.data.images.map((image) => (
+                <div class="col-md-4 mb-4">
+                    <div class="item">
+                        <div class="position-re o-hidden">
+                            <a href={image.src} class="image-popup-no-margins img-zoom">
+                                <Image src={image} alt={entry.data.title} width={356} height={257} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+))}
+
+<div class="mb-5">
+    <h3>{t('gallery.outdoor')}</h3>
+    <div class="row">
+        {outdoorImages.map((image) => (
+            <div class="col-md-4 mb-4">
+                <div class="item">
+                    <div class="position-re o-hidden">
+                        <a href={image.src} class="image-popup-no-margins img-zoom">
+                            <Image src={image} alt={t('gallery.outdoor')} width={356} height={257} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

@@ -1,0 +1,86 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+import { Image } from "astro:assets";
+import favicon from "../assets/img/favicon.png";
+import CookieBanner from "../components/CookieBanner.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+
+import "../styles/plugins.css";
+import "../styles/style.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const lang = getLangFromUrl(Astro.url);
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Ortygia View Villas", description = "Luxury Resort apartments & suites" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <GoogleAnalytics />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="THE CAPPA Luxury Hotel Template by DuruThemes" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href={favicon.src} type="image/png" sizes="32x32" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400&family=Barlow:wght@400&family=Gilda+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+      <div id="preloader-status">
+        <div class="preloader-position loader"><span></span></div>
+      </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+    </div>
+
+    <Header />
+    
+    <slot />
+
+    <Footer />
+    <CookieBanner />
+  
+
+    <!-- jQuery -->
+    <script is:inline src="js/jquery-3.7.1.min.js"></script>
+    <script is:inline src="js/jquery-migrate-3.5.0.min.js"></script>
+    <script is:inline src="js/modernizr-2.6.2.min.js"></script>
+    <script is:inline src="js/imagesloaded.pkgd.min.js"></script>
+    <script is:inline src="js/jquery.isotope.v3.0.2.js"></script>
+    <script is:inline src="js/pace.js"></script>
+    <script is:inline src="js/popper.min.js"></script>
+    <script is:inline src="js/bootstrap.min.js"></script>
+    <script is:inline src="js/scrollIt.min.js"></script>
+    <script is:inline src="js/jquery.waypoints.min.js"></script>
+    <script is:inline src="js/owl.carousel.min.js"></script>
+    <script is:inline src="js/jquery.stellar.min.js"></script>
+    <script is:inline src="js/jquery.magnific-popup.js"></script>
+    <script is:inline src="js/YouTubePopUp.js"></script>
+    <script is:inline src="js/select2.js"></script>
+    <script is:inline src="js/datepicker.js"></script>
+    <script is:inline src="js/smooth-scroll.min.js"></script>
+    <script is:inline src="js/custom.js"></script>
+  </body>
+</html>

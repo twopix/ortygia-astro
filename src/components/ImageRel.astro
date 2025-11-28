@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, alt, width, height } = Astro.props;
+
+// Убираем ведущий слэш, трансформируем путь для импорта
+const normalizedPath = src.startsWith("/") ? src.slice(1) : src;
+
+// Динамически импортируем изображение как модуль
+const importedSrc = await import(`../../${normalizedPath}`).then((mod) => mod.default);
+---
+
+<Image src={importedSrc} alt={alt} width={width} height={height} loading="lazy" />

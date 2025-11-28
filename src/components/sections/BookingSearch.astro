@@ -1,0 +1,74 @@
+---
+// Booking Search form component
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="booking-wrapper">
+  <div class="container">
+    <div class="booking-inner clearfix">
+      <form action="https://blue-essense-villasbreeze.reserve-online.net/" method="GET" target="_blank" class="form1 clearfix">
+        <input type="hidden" name="rooms" value="1" />
+        <div class="col1 c1">
+          <div class="input1_wrapper border-l border-b border-t border-r">
+            <label>Check in</label>
+            <div class="input1_inner">
+              <input type="text" name="checkin" class="form-control input datepicker" placeholder="Check in" />
+            </div>
+          </div>
+        </div>
+        <div class="col1 c2">
+          <div class="select1_wrapper border-l border-b border-t border-r">
+            <label>{t("booking.nights")}</label>
+            <div class="select1_inner">
+              <select name="nights" class="select2 select" style="width: 100%">
+                <option value="1" selected>1 {t("booking.night")}</option>
+                <option value="2">2 {t("booking.nights")}</option>
+                <option value="3">3 {t("booking.nights")}</option>
+                <option value="4">4 {t("booking.nights")}</option>
+                <option value="5">5 {t("booking.nights")}</option>
+                <option value="6">6 {t("booking.nights")}</option>
+                <option value="7">7 {t("booking.nights")}</option>
+                <option value="8">8 {t("booking.nights")}</option>
+                <option value="9">9 {t("booking.nights")}</option>
+                <option value="10">10 {t("booking.nights")}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col1 c3">
+          <div class="select1_wrapper border-l border-b border-t border-r">
+            <label>{t("booking.adults")}</label>
+            <div class="select1_inner">
+              <select name="adults" class="select2 select" style="width: 100%">
+                <option value="1">1 {t("booking.adult")}</option>
+                <option value="2" selected>2 {t("booking.adults")}</option>
+                <option value="3">3 {t("booking.adults")}</option>
+                <option value="4">4 {t("booking.adults")}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col1 c4">
+          <div class="select1_wrapper border-l border-b border-t border-r">
+            <label>{t("booking.children")}</label>
+            <div class="select1_inner">
+              <select name="children" class="select2 select" style="width: 100%">
+                <option value="0">{t("booking.children")}</option>
+                <option value="1">1 {t("booking.child")}</option>
+                <option value="2">2 {t("booking.children")}</option>
+                <option value="3">3 {t("booking.children")}</option>
+                <option value="4">4 {t("booking.children")}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col1 c6">
+          <button type="submit" class="btn-form1-submit">Check Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+---
+import { Image, getImage } from "astro:assets";
+
+// Promo Video section
+import slider3 from "../../assets/img/slider/slider3.jpg";
+// Resize: max 1200x800, webp format
+const optimizedBg = await getImage({
+  src: slider3,
+  width: 1200,
+  height: 800,
+  format: "webp",
+  quality: 80,
+});
+---
+
+<section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="5" data-background={optimizedBg.src}>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-12 text-center">
+        <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
+        <div class="section-subtitle"><span>Ortygia View Villas</span></div>
+        <div class="section-title"><span>Property Promotional Video</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center col-md-12">
+        <a class="vid" href="https://youtu.be/QTwg1l8FqXw">
+          <div class="vid-butn">
+            <span class="icon">
+              <i class="ti-control-play"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,16 +1,28 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSlider from "../components/sections/HeroSlider.astro";
+import BookingSearch from "../components/sections/BookingSearch.astro";
+import About from "../components/sections/About.astro";
+import Villas from "../components/sections/Rooms.astro";
+import Amenities from "../components/sections/Amenities.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Services from "../components/sections/Services.astro";
+import BookingSearchWithBackground from "../components/sections/BookingSearchWithBackground.astro";
+import ExtraServices from "../components/sections/ExtraServices.astro";
+import PromoVideo from "../components/sections/PromoVideo.astro";
+import Clients from "../components/sections/Clients.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Ortygia View Villa" description="Ortygia sea views and unobstructed panoramic vistas of Mirabello Bay and Agios Nikolaos town!">
+  <HeroSlider />
+  <BookingSearch />
+  <About />
+  <Villas />
+  <ExtraServices />
+  <PromoVideo />
+  <Amenities />
+  <Testimonials />
+  <Services />
+  <BookingSearchWithBackground />
+  <Clients />
+</BaseLayout>

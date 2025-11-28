@@ -1,0 +1,98 @@
+---
+// Footer component with contact info and links
+import { getEntry, getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const langPrefix = lang === "en" ? "" : `/${lang}`;
+
+// Get accommodation from content collection
+const accommodationCollection = await getCollection("accommodation", (room) => room.slug.startsWith(lang + "/"));
+
+const settings = await getEntry("settings", "site");
+if (!settings) throw new Error("Settings not found");
+
+// Sort by order field
+const accommodation = accommodationCollection.sort((a, b) => a.data.order - b.data.order);
+---
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="footer-column footer-about">
+            <h3 class="footer-title">{t("footer.getInTouch")}</h3>
+            <p class="footer-about-text">
+              {t("footer.reservations")}<br />
+              <a href={`tel:${settings.data.phone.replace(/[^\d+]/g, "")}`}>{settings.data.phone}</a><br />
+              <a href={`tel:${settings.data.landline.replace(/[^\d+]/g, "")}`}>{settings.data.landline}</a>
+            </p>
+            <div class="footer-language">
+              <i class="lni ti-world"></i>
+              <select onchange="location = this.value;">
+                <option value="http://duruthemes.com/">English</option>
+                <option value="http://duruthemes.com/">German</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 offset-md-1">
+          <div class="footer-column footer-explore clearfix">
+            <h3 class="footer-title">Explore</h3>
+            <ul class="footer-explore-list list-unstyled">
+              {
+                accommodation.map((room) => {
+                  const slug = room.slug.substring(3); // remove en/ or el/
+                  const href = lang === "el" ? `/el/accommodation/${slug}` : `/accommodation/${slug}`;
+                  return (
+                    <li>
+                      <a href={href}>{room.data.title}</a>
+                    </li>
+                  );
+                })
+              }
+              <li><a href={`${langPrefix}/cookies-privacy-policy-agreement`}>{t("footer.cookiePolicy")}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-column footer-contact">
+            <h3 class="footer-title">{t("footer.contact")}</h3>
+            <p class="footer-contact-text">
+              {settings.data.address[lang]}
+              <br />
+              {t("footer.license")}{settings.data.license}
+            </p>
+            <div class="footer-contact-info">
+              <p class="footer-contact-phone"><span class="flaticon-call"></span> 855 100 4444</p>
+              <p class="footer-contact-mail"><a href={`mailto:${settings.data.email}`}>{settings.data.email}</a></p>
+            </div>
+            <div class="footer-about-social-list">
+              <a href="#"><i class="ti-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href={settings.data.facebook} target="_blank"><i class="ti-facebook"></i></a>
+              <a href={settings.data.instagram} target="_blank"><i class="ti-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="footer-bottom-inner">
+            <p class="footer-bottom-copy-right">
+              &copy; {new Date().getFullYear()}
+              {settings.data.siteName}. {t("footer.allRightsReserved")} Created by <a href="https://twopix.gr" target="_blank">(2p) Twopix</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
