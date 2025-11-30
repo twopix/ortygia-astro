@@ -12,13 +12,14 @@ description: |-
 squareMeters: 52 τ.μ.
 beds: 2 υπνοδωμάτια με queen-size κρεβάτι το καθένα
 bathrooms: 1 μπάνιο με ντουζιέρα
-kitchenette: κουζίνα 
+kitchenette: κουζίνα
 people: έως 4 επισκέπτες
+level: επίπεδο υπογείου
 amenities:
   - name: 2 υπνοδωμάτια με queen-size κρεβάτι το καθένα
   - name: Σύστημα κλιματισμού
 images:
-  - ''
+  - ../src/assets/img/rooms/echo-ortygia-suite-mykonos-bedroom.jpg
 imageOnRight: false
 featured: false
 order: 0

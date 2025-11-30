@@ -12,8 +12,9 @@ description: |-
 squareMeters: 52 sq.m.
 beds: 2 bedrooms with a queen-size bed each
 bathrooms: 1 bathroom with shower
-kitchenette: kitchen 
+kitchenette: kitchen
 people: up to 4 guests
+level: basement level
 amenities:
   - name: 2 bedrooms with a queen-size bed each
 images:
