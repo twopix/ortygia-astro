@@ -29,7 +29,7 @@ collections:
       - { label: "Bathrooms", name: "bathrooms", widget: "string", required: true, default: "1", i18n: true }
       - { label: "Kitchenette", name: "kitchenette", widget: "string", default: false, i18n: true }
       - { label: "Max People", name: "people", widget: "string", required: true, i18n: true }
-      - { label: "Level", name: "level", widget: "string", required: true, hint: "Basement level", i18n: true }
+      - { label: "Level", name: "level", widget: "string", required: false, hint: "Basement level", i18n: true }
       - {
           label: "Amenities",
           name: "amenities",
