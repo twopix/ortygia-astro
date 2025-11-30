@@ -25,10 +25,11 @@ collections:
       - { label: "Intro", name: "intro", widget: "text", required: false, i18n: true }
       - { label: "Description (HTML)", name: "description", widget: "markdown", required: true, i18n: true }
       - { label: "Square Meters", name: "squareMeters", widget: "string", required: true, hint: "e.g., 45 m²", i18n: true }
-      - { label: "Bed Size", name: "beds", widget: "string", required: true, hint: "e.g., 160x200", i18n: true }
+      - { label: "Bedrooms or Beds", name: "beds", widget: "string", required: true, hint: "2 bedrooms ", i18n: true }
       - { label: "Bathrooms", name: "bathrooms", widget: "string", required: true, default: "1", i18n: true }
-      - { label: "Kitchenette", name: "kitchenette", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Kitchenette", name: "kitchenette", widget: "string", default: false, i18n: true }
       - { label: "Max People", name: "people", widget: "string", required: true, i18n: true }
+      - { label: "Level", name: "level", widget: "string", required: true, hint: "Basement level", i18n: true }
       - {
           label: "Amenities",
           name: "amenities",
@@ -38,7 +39,7 @@ collections:
           fields:
             [
               { label: "Amenity Name", name: "name", widget: "string",i18n: true },
-              { label: "Icon Class", name: "icon", widget: "string", hint: "e.g., flaticon-wifi, flaticon-breakfast" }
+              { label: "Icon Class", name: "icon", widget: "string", default: "flaticon-next", hint: "e.g., flaticon-next" }
             ]
         }
       - {
