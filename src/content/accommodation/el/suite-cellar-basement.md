@@ -12,7 +12,7 @@ description: |-
 squareMeters: 52 τ.μ.
 beds: 2 υπνοδωμάτια με queen-size κρεβάτι το καθένα
 bathrooms: 1 μπάνιο με ντουζιέρα
-kitchenette: true
+kitchenette: κουζίνα 
 people: έως 4 επισκέπτες
 amenities:
   - name: 2 υπνοδωμάτια με queen-size κρεβάτι το καθένα

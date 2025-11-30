@@ -12,7 +12,7 @@ const accommodationCollection = defineCollection({
       bathrooms: z.string().default("1"),
       kitchenette: z.string(),
       people: z.string(),
-      level: z.string(),
+      level: z.string().optional(),
       amenities: z
         .array(
           z.object({
