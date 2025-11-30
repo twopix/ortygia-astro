@@ -14,7 +14,7 @@ i18n:
 
 collections:
   - name: "accommodation"
-    label: "Apartments"
+    label: "Suites & Rooms"
     folder: "src/content/accommodation"
     create: true
     slug: "{{slug}}"
@@ -48,7 +48,7 @@ collections:
           widget: "list",
           required: true,
           i18n: duplicate,
-          field: { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/rooms", public_folder: "src/assets/img/rooms",  }
+          field: { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/rooms", public_folder: "src/assets/img/rooms",  i18n: duplicate}
         }
       - { label: "Image Position", name: "imageOnRight", widget: "boolean", default: false, i18n: duplicate }
       - { label: "Featured", name: "featured", widget: "boolean", default: false, i18n: duplicate }
