@@ -1,0 +1,113 @@
+backend:
+  name: github
+  branch: main
+  repo: twopix/ortygia-astro
+
+media_folder: "src/assets/img"
+public_folder: "src/assets/img"
+logo_url: https://twopix.gr/img/logo.png
+
+i18n:
+  structure: multiple_folders
+  locales: [en, el]
+  default_locale: en
+
+collections:
+  - name: "accommodation"
+    label: "Apartments"
+    folder: "src/content/accommodation"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    icon: room_preferences
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, i18n: true }
+      - { label: "Intro", name: "intro", widget: "text", required: false, i18n: true }
+      - { label: "Description (HTML)", name: "description", widget: "markdown", required: true, i18n: true }
+      - { label: "Square Meters", name: "squareMeters", widget: "string", required: true, hint: "e.g., 45 m²", i18n: true }
+      - { label: "Bed Size", name: "beds", widget: "string", required: true, hint: "e.g., 160x200", i18n: true }
+      - { label: "Bathrooms", name: "bathrooms", widget: "string", required: true, default: "1", i18n: true }
+      - { label: "Kitchenette", name: "kitchenette", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Max People", name: "people", widget: "string", required: true, i18n: true }
+      - {
+          label: "Amenities",
+          name: "amenities",
+          widget: "list",
+          required: false,
+          i18n: true,
+          fields:
+            [
+              { label: "Amenity Name", name: "name", widget: "string",i18n: true },
+              { label: "Icon Class", name: "icon", widget: "string", hint: "e.g., flaticon-wifi, flaticon-breakfast" }
+            ]
+        }
+      - {
+          label: "Images",
+          name: "images",
+          widget: "list",
+          required: true,
+          i18n: duplicate,
+          field: { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/rooms", public_folder: "src/assets/img/rooms",  }
+        }
+      - { label: "Image Position", name: "imageOnRight", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Order", name: "order", widget: "number", default: 0, i18n: duplicate }
+  - name: "beaches"
+    label: "Beaches"
+    folder: "src/content/beaches"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    icon: beach_access
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, i18n: true }
+      - { label: "Description", name: "description", widget: "markdown", required: true, i18n: true }
+      - { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/beaches", public_folder: "src/assets/img/beaches", i18n: duplicate}
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, i18n: duplicate }
+  - name: "attractions"
+    label: "Attractions"
+    folder: "src/content/attractions"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    icon: church
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, i18n: true }
+      - { label: "Description", name: "description", widget: "markdown", required: true, i18n: true }
+      - { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/attractions", public_folder: "src/assets/img/attractions", i18n: duplicate}
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, i18n: duplicate }
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    icon: parking_valet
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, i18n: true }
+      - { label: "Description", name: "description", widget: "markdown", required: true, i18n: true }
+      - { label: "Image", name: "image", widget: "image", media_folder: "src/assets/img/services", public_folder: "src/assets/img/services", i18n: duplicate}
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Order", name: "order", widget: "number", default: 0, i18n: duplicate }
+  - name: "settings"
+    label: "Site Settings"
+    icon: manufacturing
+    files:
+      - label: "General Info"
+        name: "site"
+        file: "src/content/settings/site.json"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Greek", name: "el", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook", name: "facebook", widget: "string", required: false }
+          - { label: "Tripadvisor", name: "tripadvisor", widget: "string", required: false }
+          - { label: "License", name: "license", widget: "string", required: false }
