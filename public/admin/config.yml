@@ -38,8 +38,7 @@ collections:
           i18n: true,
           fields:
             [
-              { label: "Amenity Name", name: "name", widget: "string",i18n: true },
-              { label: "Icon Class", name: "icon", widget: "string", default: "flaticon-next", hint: "e.g., flaticon-next" }
+              { label: "Amenity Name", name: "name", widget: "string",i18n: true }
             ]
         }
       - {

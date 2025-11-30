@@ -16,7 +16,6 @@ kitchenette: kitchen
 people: up to 4 guests
 amenities:
   - name: 2 bedrooms with a queen-size bed each
-    icon: dad
 images:
   - ../src/assets/img/rooms/echo-ortygia-suite-mykonos-bedroom.jpg
 imageOnRight: false

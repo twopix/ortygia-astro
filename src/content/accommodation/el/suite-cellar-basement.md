@@ -16,9 +16,7 @@ kitchenette: κουζίνα
 people: έως 4 επισκέπτες
 amenities:
   - name: 2 υπνοδωμάτια με queen-size κρεβάτι το καθένα
-    icon: ''
   - name: Σύστημα κλιματισμού
-    icon: ''
 images:
   - ''
 imageOnRight: false

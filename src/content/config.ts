@@ -17,7 +17,6 @@ const accommodationCollection = defineCollection({
         .array(
           z.object({
             name: z.string(),
-            icon: z.string().optional(), // e.g., flaticon-wifi
           })
         )
         .optional(),
