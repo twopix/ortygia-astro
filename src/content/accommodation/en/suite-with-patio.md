@@ -20,7 +20,40 @@ people: up to 2 guests
 level: ground level
 amenities:
   - name: Two-level suite
-  - name: 1 queen-size bed
+  - name: 1 queen-size bed 
+  - name: Loft with net
+  - name: Patio
+  - name: A/C
+  - name: Heating
+  - name: Fully-equipped kitchen
+  - name: Oven
+  - name: Stovetop
+  - name: Toaster
+  - name: Kitchenware
+  - name: Nespresso coffee machine
+  - name: Coffee/ tea supplies
+  - name: Electric kettle
+  - name: Wine glasses
+  - name: Refrigerator
+  - name: Living area with sofa and dining table
+  - name: 32’ Smart TV
+  - name: Clothing rack
+  - name: Iron
+  - name: Mini ironing board
+  - name: Bed linen
+  - name: Hypoallergenic pillows
+  - name: Bathroom with shower
+  - name: Bath & beach towels
+  - name: Free toiletries
+  - name: Hairdryer
+  - name: Fire extinguisher
+  - name: Smoke alarm
+  - name: Non-smoking suite
+  - name: Pets are not allowed
+  - name: Baby-cot available (upon request)
+  - name: Free parking on-site
+
+
 images:
   - ../src/assets/img/rooms/chloe-ortygia-suite-mykonos-bedroom.jpg
 imageOnRight: false
